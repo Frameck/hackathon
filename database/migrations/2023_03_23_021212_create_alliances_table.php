@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('alliances', function (Blueprint $table) {
             $table->id();
             $table->string('alliance_id')->nullable()->index();
-            $table->boolean('family_friendly')->nullable();
+            $table->integer('family_friendly')->nullable();
             $table->date('date')->nullable();
             $table->foreignIdFor(User::class, 'created_by')->nullable()->constrained(User::getTableName());
             $table->foreignIdFor(User::class, 'updated_by')->nullable()->constrained(User::getTableName());

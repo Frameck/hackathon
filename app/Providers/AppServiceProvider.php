@@ -10,6 +10,7 @@ use App\Helpers\QueryHelper;
 use App\Helpers\ResponseHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -43,5 +44,7 @@ class AppServiceProvider extends ServiceProvider
         ResponseHelper::registerMacros();
         QueryHelper::registerMacros();
         CollectionHelper::registerMacros();
+
+        Gate::before(fn () => true);
     }
 }

@@ -8,6 +8,6 @@ class AllianceSeeder extends Seeder
 {
     public function run()
     {
-        //
+
     }
 }

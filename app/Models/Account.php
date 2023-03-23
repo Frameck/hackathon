@@ -10,13 +10,10 @@ use App\Traits\HasSortableAttributes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 use Znck\Eloquent\Traits\BelongsToThrough;
 
 class Account extends Model
 {
-    use HasSlug;
     use HasFactory;
     use SoftDeletes;
     use BelongsToThrough;
@@ -33,12 +30,4 @@ class Account extends Model
     ];
 
     protected $casts = [];
-
-    // FUNCTIONS
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom($this->getSlugOrigin())
-            ->saveSlugsTo('slug');
-    }
 }

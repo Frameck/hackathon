@@ -2,6 +2,7 @@
 
 use App\Helpers\RouteHelper;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Services\KarmaUserService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,4 +21,10 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::middleware('auth:sanctum')
     ->group(function () {
         RouteHelper::registerApiRoutes();
+
+        Route::get('decay', fn () => (
+            response()->json(
+                KarmaUserService::calculateDecay(request('user_id'))
+            )
+        ));
     });

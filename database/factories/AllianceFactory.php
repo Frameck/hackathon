@@ -12,7 +12,7 @@ class AllianceFactory extends Factory
     public function definition()
     {
         return [
-            //
+
         ];
     }
 }

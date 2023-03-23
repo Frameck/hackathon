@@ -6,12 +6,13 @@ trait HasModelLabelAndRecordTitleAttribute
 {
     public static function getRecordTitleAttribute(): ?string
     {
-        $slugOrigin = app(self::getModel())->getSlugOrigin();
-        if (is_array($slugOrigin)) {
-            return $slugOrigin[0];
-        }
+        // $slugOrigin = app(self::getModel())->getSlugOrigin();
+        // if (is_array($slugOrigin)) {
+        //     return $slugOrigin[0];
+        // }
 
-        return $slugOrigin;
+        // return $slugOrigin;
+        return 'id';
     }
 
     public static function getModelLabel(): string

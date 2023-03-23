@@ -8,6 +8,6 @@ class ChatMessageSeeder extends Seeder
 {
     public function run()
     {
-        //
+
     }
 }

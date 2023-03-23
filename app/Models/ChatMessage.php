@@ -9,14 +9,12 @@ use App\Traits\HasSignature;
 use App\Traits\HasSortableAttributes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 use Znck\Eloquent\Traits\BelongsToThrough;
 
 class ChatMessage extends Model
 {
-    use HasSlug;
     use HasFactory;
     use SoftDeletes;
     use BelongsToThrough;
@@ -32,13 +30,17 @@ class ChatMessage extends Model
         'updated_at',
     ];
 
-    protected $casts = [];
+    protected $casts = [
+        'filtered_content' => 'array',
+    ];
 
-    // FUNCTIONS
-    public function getSlugOptions(): SlugOptions
+    public function account(): BelongsTo
     {
-        return SlugOptions::create()
-            ->generateSlugsFrom($this->getSlugOrigin())
-            ->saveSlugsTo('slug');
+        return $this->belongsTo(Account::class, 'account_id', 'account_id');
+    }
+
+    public function alliance(): BelongsTo
+    {
+        return $this->belongsTo(Alliance::class, 'alliance_id', 'alliance_id');
     }
 }
