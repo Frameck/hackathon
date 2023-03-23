@@ -4,7 +4,7 @@ import fs from 'fs';
 import { homedir } from 'os';
 import { resolve } from 'path';
 
-let host = 'http://laravel-skeleton.test'
+let host = 'http://hackathon.test'
  
 export default defineConfig({
     plugins: [
