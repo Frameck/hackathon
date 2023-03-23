@@ -164,8 +164,8 @@ class ChatMessageService implements CanProvideValidationRules
 
         return [
             'message' => $message,
-            'before' => $messages->where('timestamp', '<', $message->timestamp)->all(),
-            'after' => $messages->where('timestamp', '>', $message->timestamp)->all(),
+            'before' => $messages->where('timestamp', '<', $message->timestamp)->values(),
+            'after' => $messages->where('timestamp', '>', $message->timestamp)->values(),
         ];
     }
 }
