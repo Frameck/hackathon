@@ -1,0 +1,91 @@
+{
+    "name": "frameck/laravel-template",
+    "type": "project",
+    "description": "Laravel template repository that acts as a bootstrap for new projects",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "awcodes/filament-table-repeater": "^1.0",
+        "barryvdh/laravel-dompdf": "^2.0",
+        "bezhansalleh/filament-shield": "^2.2",
+        "filament/filament": "^2.15",
+        "filament/spatie-laravel-settings-plugin": "^2.0",
+        "guzzlehttp/guzzle": "^7.2",
+        "jpkleemans/attribute-events": "^1.4",
+        "konnco/filament-import": "^1.2",
+        "lab404/laravel-impersonate": "^1.7",
+        "laravel/framework": "^9.31",
+        "laravel/sanctum": "^3.0",
+        "laravel/tinker": "^2.7",
+        "maatwebsite/excel": "^3.1",
+        "psr/simple-cache": "2.x",
+        "pxlrbt/filament-environment-indicator": "^0.2.0",
+        "pxlrbt/filament-excel": "^1.1",
+        "spatie/laravel-sluggable": "^3.4",
+        "staudenmeir/belongs-to-through": "^2.12",
+        "stechstudio/filament-impersonate": "^2.6",
+        "uccellolabs/filament-theme-color": "^1.0"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.7",
+        "barryvdh/laravel-ide-helper": "^2.12",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0",
+        "spatie/laravel-stubs": "^2.5"
+    },
+    "post-update-cmd": [
+        "@php artisan filament:upgrade"
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/Helpers/AppConst.php",
+            "app/Helpers/HelperFunctions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

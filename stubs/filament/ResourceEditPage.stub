@@ -1,0 +1,38 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Filament\Resources\{{ resourceClass }};
+use Filament\Pages\Actions;
+use Filament\Pages\Actions\Action;
+use Filament\Resources\Pages\EditRecord;
+
+class {{ resourcePageClass }} extends EditRecord
+{
+    protected static string $resource = {{ resourceClass }}::class;
+
+    protected function getActions(): array
+    {
+        return [
+{{ actions }}
+        ];
+    }
+
+    protected function getFormActions(): array
+    {
+        return [
+            $this->getSaveFormAction(),
+            $this->getSaveAndCloseFormAction(),
+            $this->getCancelFormAction(),
+        ];
+    }
+
+    protected function getSaveAndCloseFormAction(): Action
+    {
+        return Action::make('saveAndClose')
+            ->label(__('filament-admin.buttons.save_and_close'))
+            ->color('secondary')
+            ->action('save')
+            ->after(fn () => redirect(static::getResource()::getUrl('index')));
+    }
+}

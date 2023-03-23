@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Traits\HasMakeConstructor;
+
+class {{ class }}
+{
+    use HasMakeConstructor;
+}

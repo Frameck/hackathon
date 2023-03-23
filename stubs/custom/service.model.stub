@@ -1,0 +1,12 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Models\{{ model }};
+
+class {{ class }} extends Service
+{
+    protected static ?string $model = {{ model }}::class;
+
+    protected ?{{ model }} $modelInstance = null;
+}

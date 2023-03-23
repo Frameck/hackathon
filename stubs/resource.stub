@@ -1,0 +1,42 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Traits\CanIncludeRelationships;
+use App\Traits\HasAttributesToExclude;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Arr;
+
+class {{ class }} extends JsonResource
+{
+    use HasAttributesToExclude;
+    use CanIncludeRelationships;
+
+    public function toArray($request)
+    {
+        $attributes = Arr::except(
+            parent::toArray($request),
+            $this->getAttributesToExclude()
+        );
+
+        return array_merge(
+            $attributes,
+            $this->transformAttributes(),
+            $this->getRelationshipsToInclude(),
+        );
+    }
+
+    protected function getAdditionalAttributesToExclude(): array
+    {
+        return [
+
+        ];
+    }
+
+    protected function transformAttributes(): array
+    {
+        return [
+
+        ];
+    }
+}
